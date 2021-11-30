@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 370px;
+  height: 100vh;
+  background-color: #0F2825;
+  padding: 35px 40px;
+}
+
+.aside-logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  margin-bottom: 45px;
+}
+
+.aside-logo img {
+  width: 100%;
+  height: 100%;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.list {
+  display: grid;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.list p,
+.list a {
+  padding: 7px 0;
+}
+
+.list-name {
+  text-transform: uppercase;
+  color: #8E9AA7;
+}
+
+.list-link {
+  color: #fff;
+  border-radius: 10px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.list-link::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #00ECBE;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s;
+}
+
+.list-link:hover::after {
+  width: 100%;
+}
+
+.list-link:hover {
+  color: #00ECBE;
+}
+
+header {
+  width: 100%;
+  height: 120px;
+  background-color: green;
+}
+
+body {
+  font-size: 16px;
+  background: #fff;
+}
+
+.wrapper {
+  margin-left: 370px;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  background-color: blue;
+}
