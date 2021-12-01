@@ -1,17 +1,22 @@
 @import "mixing";
 @import "fonts";
 @import "reset";
+@import "audio";
 
 @import "aside";
 @import "header";
 
 body {
-   font-size: 16px;
-   background: #fff;
+   font-family: "gilroy400", sans-serif;
+   font-size: 20px;
+   background: $white;
 }
 
 .wrapper {
-   margin-left: 370px;
+   width: 80%;
+   float: right;
+   // background color нужно изменить на linear
+   background-color: #002C23;
 }
 
 main {

@@ -2,10 +2,12 @@
    position: fixed;
    top: 0;
    left: 0;
-   width: 370px;
+   width: 20%;
    height: 100vh;
    background-color: #0F2825;
-   padding: 35px 40px;
+   padding: 35px 40px 100px 40px;
+   overflow-y: auto;
+   z-index: 10;
 
    &-logo {
       display: block;
@@ -34,11 +36,11 @@
 
    &-name {
       text-transform: uppercase;
-      color: #8E9AA7;
+      color: $font-col;
    }
 
    &-link {
-      color: #fff;
+      color: $white;
       border-radius: 10px;
       transition: all .3s;
       display: flex;
@@ -50,7 +52,7 @@
          display: block;
          width: 0%;
          height: 2px;
-         background: #00ECBE;
+         background: $blue-col;
          position: absolute;
          bottom: 0;
          left: 0;
@@ -63,7 +65,17 @@
       }
 
       &:hover {
-         color: #00ECBE;
+         color: $blue-col;
       }
+
+      &.active {
+         color: $blue-col;
+
+         &::after {
+            width: 100%;
+         }
+      }
+
    }
+
 }
