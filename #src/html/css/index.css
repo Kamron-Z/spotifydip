@@ -10,6 +10,23 @@ body {
     color: white;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #191C21;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #4E555D;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #7a7e83;
+}
+
+
 .info_tracks {
     width: calc(100% - 160px);
     height: 500px;
@@ -91,7 +108,7 @@ body {
     padding: 50px;
 }
 
-.item{
+.item {
     text-transform: uppercase;
     font-size: 20px;
     color: #7a7e83;
@@ -147,21 +164,23 @@ body {
     border-radius: 6px;
 }
 
-.three-circle:hover + .menu{
+.three-circle:hover+.menu {
     transform: translateY(0px);
     cursor: pointer;
     opacity: 1;
 }
-.toUpper:hover{
+
+.toUpper:hover {
     cursor: pointer;
 }
 
-.menu:hover{
+.menu:hover {
     transform: translateY(0px);
     opacity: 1;
     height: max-content;
 
 }
+
 .three-circle {
     margin-left: 5px;
 }
