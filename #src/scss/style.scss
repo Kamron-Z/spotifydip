@@ -5,6 +5,9 @@
 
 @import "aside";
 @import "header";
+@import "main";
+@import "setting";
+
 
 body {
    font-family: "gilroy400", sans-serif;
@@ -17,10 +20,11 @@ body {
    float: right;
    // background color нужно изменить на linear
    background-color: #002C23;
+   position: relative;
+   z-index: 1;
 }
 
 main {
    width: 100%;
    height: 100vh;
-   background-color: blue;
 }
