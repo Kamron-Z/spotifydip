@@ -72,11 +72,7 @@
                opacity: 1;
             }
          }
-
-
       }
-
-
 
    }
 
@@ -91,4 +87,9 @@
       }
    }
 
+}
+
+.playlist {
+   display: flex;
+   flex-direction: column;
 }

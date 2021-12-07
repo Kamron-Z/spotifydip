@@ -1,12 +1,139 @@
 .main {
-   padding: 51px 170px 0 80px;
+   padding: 51px 170px 50px 80px;
    display: grid;
-   grid-gap: 105px;
+   grid-gap: 20px;
+   grid-template-columns: repeat(3, 1fr);
+   background: #191C21;
 
    &-item {
       &-title {
+         text-transform: uppercase;
          font-size: 16px;
          color: $gray;
+         margin-bottom: 10px;
+      }
+
+   }
+
+   &-music {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      transition: background .3s linear;
+
+      &:hover {
+         background: rgba(0, 0, 0, 0.2);
+         backdrop-filter: blur(4px);
+      }
+
+      &:hover &-love {
+         opacity: 1;
+      }
+
+      &:hover &-menu {
+         opacity: 1;
+      }
+
+
+      &-num {
+         margin-right: 19px;
+         color: $white;
+         font-size: 16px;
+      }
+
+      &-img {
+         cursor: pointer;
+         width: 44px;
+         height: 44px;
+         margin-right: 16px;
+      }
+
+      &-author {
+         margin-right: 80px;
+
+         h3 {
+            width: 130px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 5px;
+            color: $blue-col;
+            margin-bottom: 5px;
+         }
+
+         p {
+            color: $white;
+            font-size: 14px;
+            width: 130px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+         }
+      }
+
+      &-love {
+         opacity: 0;
+         width: 40px;
+         height: 40px;
+         cursor: pointer;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: opacity .2s linear;
+      }
+
+      &-time {
+         margin: 0 10px 0 10px;
+      }
+
+      &-menu {
+         opacity: 0;
+         width: 40px;
+         height: 40px;
+         cursor: pointer;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         position: relative;
+         z-index: 5;
+         transition: opacity .2s linear;
+      }
+   }
+}
+
+.music-modal {
+   display: none;
+   position: absolute;
+   z-index: 10;
+   top: -110px;
+   left: 20%;
+   background: rgba(0, 0, 0, 0.2);
+   backdrop-filter: blur(4px);
+   width: 150px;
+   height: 126px;
+   padding: 15px;
+   border-radius: 7px;
+
+   button {
+      text-align: start;
+      width: 100%;
+      text-transform: uppercase;
+      color: $white;
+      padding: 10px 0;
+      background: none;
+      border-bottom: 1px solid $white;
+      transition: color .3s linear;
+
+      &:hover {
+         color: $blue-col;
+      }
+
+      &:first-child {
+         padding-top: 0;
+      }
+
+      &:last-child {
+         border-bottom: 0;
       }
    }
 }

@@ -253,6 +253,16 @@ audio {
   font-size: 16px;
 }
 
+.playlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .header {
   padding: 37px 0;
   margin: 0 auto;
@@ -351,7 +361,7 @@ audio {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 35px 0 0 0;
+  padding: 35px 0 130px 0;
 }
 
 .intro-rigth {
@@ -361,16 +371,13 @@ audio {
   position: relative;
 }
 
-.intro-rigth img {
+.intro-rigth-img {
   width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  height: 100%;
+  background: url("../img/music-pic/lipsi.jpg") center no-repeat;
+  background-size: cover;
+  position: relative;
   z-index: 10;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 
 .intro-rigth-box {
@@ -473,14 +480,167 @@ audio {
 }
 
 .main {
-  padding: 51px 170px 0 80px;
+  padding: 51px 170px 50px 80px;
   display: grid;
-  grid-gap: 105px;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  background: #191C21;
 }
 
 .main-item-title {
+  text-transform: uppercase;
   font-size: 16px;
   color: #8E9AA7;
+  margin-bottom: 10px;
+}
+
+.main-music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0;
+  -webkit-transition: background .3s linear;
+  -o-transition: background .3s linear;
+  transition: background .3s linear;
+}
+
+.main-music:hover {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+
+.main-music:hover .main-music-love {
+  opacity: 1;
+}
+
+.main-music:hover .main-music-menu {
+  opacity: 1;
+}
+
+.main-music-num {
+  margin-right: 19px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.main-music-img {
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  margin-right: 16px;
+}
+
+.main-music-author {
+  margin-right: 80px;
+}
+
+.main-music-author h3 {
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  padding-right: 5px;
+  color: #00ECBE;
+  margin-bottom: 5px;
+}
+
+.main-music-author p {
+  color: #fff;
+  font-size: 14px;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+.main-music-love {
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: opacity .2s linear;
+  -o-transition: opacity .2s linear;
+  transition: opacity .2s linear;
+}
+
+.main-music-time {
+  margin: 0 10px 0 10px;
+}
+
+.main-music-menu {
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: 5;
+  -webkit-transition: opacity .2s linear;
+  -o-transition: opacity .2s linear;
+  transition: opacity .2s linear;
+}
+
+.music-modal {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: -110px;
+  left: 20%;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  width: 150px;
+  height: 126px;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.music-modal button {
+  text-align: start;
+  width: 100%;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 0;
+  background: none;
+  border-bottom: 1px solid #fff;
+  -webkit-transition: color .3s linear;
+  -o-transition: color .3s linear;
+  transition: color .3s linear;
+}
+
+.music-modal button:hover {
+  color: #00ECBE;
+}
+
+.music-modal button:first-child {
+  padding-top: 0;
+}
+
+.music-modal button:last-child {
+  border-bottom: 0;
 }
 
 .wrapper {
@@ -691,7 +851,6 @@ body {
 
 .wrapper {
   width: 80%;
-  height: 100%;
   float: right;
 }
 

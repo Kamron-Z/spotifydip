@@ -1,7 +1,7 @@
 .intro {
    display: flex;
    justify-content: space-between;
-   padding: 35px 0 0 0;
+   padding: 35px 0 130px 0;
 
    &-left {}
 
@@ -11,14 +11,13 @@
       height: auto;
       position: relative;
 
-      img {
+      &-img {
          width: 100%;
-         height: auto;
-         position: absolute;
-         top: 50%;
-         left: 50%;
+         height: 100%;
+         background: url('../img/music-pic/lipsi.jpg') center no-repeat;
+         background-size: cover;
+         position: relative;
          z-index: 10;
-         transform: translate(-50%, -50%);
       }
 
       &-box {
