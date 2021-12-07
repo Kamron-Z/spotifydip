@@ -13,6 +13,11 @@
   src: url("./fonts/Gilroy-Light.ttf");
 }
 
+@font-face {
+  font-family: "gilroy600";
+  src: url("./fonts/Gilroy-SemiBold.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -150,9 +155,8 @@ audio {
   left: 0;
   width: 20%;
   height: 100vh;
-  background-color: #0F2825;
+  background-color: #191C21;
   padding: 35px 40px 100px 40px;
-  overflow-y: auto;
   z-index: 10;
 }
 
@@ -161,25 +165,23 @@ audio {
   width: 60px;
   height: 60px;
   overflow: hidden;
-  margin-bottom: 45px;
+  margin-bottom: 48.5px;
 }
 
 .aside-logo img {
   width: 100%;
   height: 100%;
-  -webkit-filter: invert(100%);
-          filter: invert(100%);
 }
 
 .list {
   display: grid;
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 16px;
+  margin-bottom: 35px;
 }
 
 .list p,
 .list a {
-  padding: 7px 0;
+  margin: 7px 0;
 }
 
 .list-name {
@@ -188,11 +190,8 @@ audio {
 }
 
 .list-link {
-  color: #fff;
-  border-radius: 10px;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
+  font-size: 20px;
+  font-family: 'gilroy600', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,36 +199,54 @@ audio {
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: relative;
+  -webkit-transition: color .3s linear;
+  -o-transition: color .3s linear;
+  transition: color .3s linear;
 }
 
-.list-link::after {
+.list-link a {
+  color: #fff;
+  position: relative;
+}
+
+.list-link a::after {
   content: '';
   display: block;
-  width: 0%;
-  height: 2px;
-  background: #00ECBE;
+  width: 100%;
+  height: 1px;
+  background-color: #00ECBE;
   position: absolute;
-  bottom: 0;
   left: 0;
-  -webkit-transition: all .4s;
-  -o-transition: all .4s;
-  transition: all .4s;
+  bottom: -2px;
+  -webkit-transition: opacity .2s linear;
+  -o-transition: opacity .2s linear;
+  transition: opacity .2s linear;
+  opacity: 0;
 }
 
-.list-link:hover::after {
-  width: 100%;
-}
-
-.list-link:hover {
+.list-link:hover a {
   color: #00ECBE;
 }
 
-.list-link.active {
-  color: #00ECBE;
+.list-link:hover a::after {
+  opacity: 1;
 }
 
-.list-link.active::after {
-  width: 100%;
+.list-liked {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-liked a {
+  font-size: 16px;
 }
 
 .header {
@@ -726,8 +743,8 @@ body {
 }
 
 body {
-  font-family: "gilroy400", sans-serif;
-  font-size: 20px;
+  font-family: "gilroy600", sans-serif;
+  font-size: 16px;
   background: #fff;
 }
 
