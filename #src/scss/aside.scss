@@ -4,7 +4,8 @@
    left: 0;
    width: 20%;
    height: 100vh;
-   background-color: #191C21;
+   background: rgba(0, 0, 0, 0.2);
+   backdrop-filter: blur(4px);
    padding: 35px 40px 100px 40px;
    z-index: 10;
 

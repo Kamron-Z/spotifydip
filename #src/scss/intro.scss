@@ -1,0 +1,108 @@
+.intro {
+   display: flex;
+   justify-content: space-between;
+   padding: 35px 0 0 0;
+
+   &-left {}
+
+   &-rigth {
+      width: 100%;
+      max-width: 410px;
+      height: auto;
+      position: relative;
+
+      img {
+         width: 100%;
+         height: auto;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         z-index: 10;
+         transform: translate(-50%, -50%);
+      }
+
+      &-box {
+         width: 100%;
+         height: 100%;
+         backdrop-filter: blur(4px);
+         background: rgba(255, 255, 255, 0.2);
+         position: absolute;
+         top: -35px;
+         left: 22px;
+         z-index: 1;
+      }
+
+   }
+
+   &-author {
+      font-family: 'gilroy700', sans-serif;
+      font-size: 81px;
+      color: $blue-col;
+   }
+
+   &-name {
+      font-size: 58px;
+      font-family: 'gilroy400', sans-serif;
+      color: $white;
+      margin-bottom: 14px;
+   }
+
+   &-time {
+      font-size: 16px;
+      color: $gray;
+      margin-bottom: 27px;
+   }
+
+   &-switch {
+      margin-bottom: 70px;
+      display: flex;
+      align-items: center;
+
+      button {
+         width: 30px;
+         height: 30px;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: background .3s linear;
+
+         &:hover {
+            background: $blue-col;
+         }
+      }
+
+      .prew {
+         background: $white;
+         margin-right: 12px;
+      }
+
+      .next {
+         img {
+            transform: rotate(180deg);
+         }
+      }
+   }
+}
+
+.dogs {
+   display: flex;
+   align-items: center;
+
+   div {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #4E555D;
+      margin-right: 7px;
+      // cursor: pointer;
+
+      &:last-child {
+         margin-right: 0;
+      }
+
+      &:nth-child(2) {
+         background-color: $blue-col;
+      }
+   }
+}

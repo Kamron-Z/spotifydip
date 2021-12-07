@@ -5,26 +5,26 @@
 
 @import "aside";
 @import "header";
+@import "intro";
 @import "main";
 @import "setting";
-
 
 body {
    font-family: "gilroy600", sans-serif;
    font-size: 16px;
-   background: $white;
+   color: $white;
+   height: auto;
+   background: linear-gradient(#003127, #000202);
 }
 
 .wrapper {
    width: 80%;
+   height: 100%;
    float: right;
    // background color нужно изменить на linear
-   background-color: #002C23;
-   position: relative;
-   z-index: 1;
+
 }
 
-main {
-   width: 100%;
-   height: 100vh;
+.container {
+   padding: 0 170px 0 80px;
 }
