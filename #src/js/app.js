@@ -3,3 +3,4 @@
 @@include('aside.js')
 @@include('header.js')
 @@include('modal.js')
+@@include('audio.js')

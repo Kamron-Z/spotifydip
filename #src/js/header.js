@@ -67,5 +67,5 @@ const search_play = (elemId) => {
       return audio_arr.indexOf(item) == pos
    })
    reload_last(last_arr)
-
+   playAudio()
 }
