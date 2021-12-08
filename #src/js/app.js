@@ -1,3 +1,5 @@
 @@include('data.js')
 @@include('reload.js')
 @@include('aside.js')
+@@include('header.js')
+@@include('modal.js')

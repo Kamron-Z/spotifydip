@@ -1,8 +1,8 @@
 let playlists = [{
-   title: 'liked',
+   title: 'lisa',
    music: []
 }, {
-   title: 'Love',
+   title: 'drake',
    music: []
 }]
 

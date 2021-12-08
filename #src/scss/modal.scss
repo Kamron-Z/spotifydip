@@ -1,0 +1,84 @@
+.modal {
+   position: fixed;
+   top: -50%;
+   left: 50%;
+   z-index: 300;
+   transform: translate(-50%, -50%);
+   padding: 48px;
+   background: #191C21;
+   width: 700px;
+   border-radius: 12px;
+   transition: top .3s linear;
+
+   &.active {
+      top: 50%;
+   }
+
+   // &.active .body-mask {
+   //    display: block;
+   // }
+
+   &-title {
+      font-size: 48px;
+      color: $blue-col;
+      margin-bottom: 52px;
+   }
+
+   &-cancel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+   }
+
+   &-box {
+
+      &-item {
+         display: flex;
+         justify-content: space-between;
+         padding: 10px 0;
+
+         p {
+            font-size: 22px;
+            color: $white;
+         }
+
+         span {
+            font-size: 22px;
+            color: $gray;
+         }
+      }
+   }
+
+   &-add {
+      margin-top: 20px;
+      width: 100%;
+
+      input {
+         width: 100%;
+         background: #32363D;
+         height: 40px;
+         border-radius: 8px;
+         margin-bottom: 8px;
+         padding: 0 18px;
+         font-size: 22px;
+         color: $blue-col;
+      }
+   }
+
+   &-btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 22px;
+      color: #000;
+      background: $blue-col;
+      border-radius: 5px;
+      transition: color .3s linear, background .2s linear;
+
+      &:hoveR {
+         color: $blue-col;
+         background: #000;
+      }
+   }
+
+}

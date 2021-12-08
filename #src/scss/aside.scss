@@ -7,7 +7,8 @@
    background: rgba(0, 0, 0, 0.2);
    backdrop-filter: blur(4px);
    padding: 35px 40px 100px 40px;
-   z-index: 10;
+   z-index: 100;
+   overflow: auto;
 
    &-logo {
       display: block;
@@ -92,4 +93,19 @@
 .playlist {
    display: flex;
    flex-direction: column;
+}
+
+::-webkit-scrollbar {
+   width: 10px;
+   height: 10px;
+}
+
+::-webkit-scrollbar-track {
+   border: 1px solid $gray;
+   border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+   background: $blue-col;
+   border-radius: 15px;
 }

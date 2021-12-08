@@ -10,7 +10,8 @@
 </head>
 
 <body>
-   <!-- @@include('./_audio.html') -->
+   @@include('./_audio.html')
+   @@include('./_modal.html')
    @@include('./_aside.html')
    <div class="wrapper">
       <div class="container">
@@ -18,12 +19,20 @@
          @@include('./_intro.html')
       </div>
       <!-- можно создать одельный файл как header aside audio -->
+      <div class="body-mask"></div>
       <main class="main">
          <!-- item1  -->
          <div class="main-item">
             <p class="main-item-title">10 random songs</p>
-            <div class="music-random">
-            </div>
+            <div class="music-random"></div>
+         </div>
+         <div class="main-item">
+            <p class="main-item-title">liked tracks</p>
+            <div class="music-liked"></div>
+         </div>
+         <div class="main-item">
+            <p class="main-item-title">recently listened</p>
+            <div class="music-last"></div>
          </div>
       </main>
    </div>

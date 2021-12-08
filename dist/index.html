@@ -10,7 +10,27 @@
 </head>
 
 <body>
-   
+   <div class="audio">
+   <a href="#" class="audio-user">
+      <p class="audio-user-name">The Weeknd</p>
+      <span class="audio-user-album">Starboy</span>
+   </a>
+   <audio class="audio-play" src="" controls autoplay></audio>
+</div>
+   <div class="modal">
+   <p class="modal-title">Add to playlist</p>
+   <img class="modal-cancel" src="./img/cancel.png">
+   <div class="modal-box">
+      <div class="modal-box-item">
+         <p>Liked songs</p>
+         <span>122 songs</span>
+      </div>
+   </div>
+   <div class="modal-add">
+      <input type="text" placeholder="Name of playlist">
+      <button class="modal-btn">Save</button>
+   </div>
+</div>
    <aside class="aside">
    <a href="./index.html" class="aside-logo">
       <img src="./img/spotify-logo.png">
@@ -35,17 +55,11 @@
    </div>
    <div class="list">
       <p class="list-name">liked songs</p>
-      <div class="list-link list-liked">
-         <a href="#" class="list-link">Rampampam</a>
-         <span>3:53</span>
-      </div>
-      <div class="list-link list-liked">
-         <a href="#" class="list-link">Nice to meet ya</a>
-         <span>4:53</span>
-      </div>
-      <div class="list-link list-liked">
-         <a href="#" class="list-link">Nice to meet ya</a>
-         <span>4:53</span>
+      <div class="aside_liked">
+         <div class="list-link list-liked">
+            <a href="#" class="list-link">Rampampam</a>
+            <span>3:53</span>
+         </div>
       </div>
    </div>
 </aside>
@@ -55,6 +69,13 @@
    <div class="header-search">
       <input type="text" class="search" placeholder="Search by name and artist">
       <img src="./img/header-search.png" width="30px">
+      <div class="search-done">
+         <div class="search-done-item">
+            <p class="title">Stay</p>
+            <p class="author">Dua lipa</p>
+            <p class="time">3:30</p>
+         </div>
+      </div>
    </div>
    <a href="#" class="header-user">
       <div class="header-user-name">Alex Adams</div>
@@ -88,12 +109,20 @@
 </div>
       </div>
       <!-- можно создать одельный файл как header aside audio -->
+      <div class="body-mask"></div>
       <main class="main">
          <!-- item1  -->
          <div class="main-item">
             <p class="main-item-title">10 random songs</p>
-            <div class="music-random">
-            </div>
+            <div class="music-random"></div>
+         </div>
+         <div class="main-item">
+            <p class="main-item-title">liked tracks</p>
+            <div class="music-liked"></div>
+         </div>
+         <div class="main-item">
+            <p class="main-item-title">recently listened</p>
+            <div class="music-last"></div>
          </div>
       </main>
    </div>
