@@ -38,5 +38,5 @@ btn_add.onclick = () => {
    }
 
    modal_reload()
-
+   aside_reload()
 }

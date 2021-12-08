@@ -341,12 +341,6 @@ modal_cancel.onclick = () => {
       item.classList.remove('active')
    }
 }
-
-var audio = document.getElementById('audio-play');
-audio.ontimeupdate = () => {
-   var currentTimeMs = audio.currentTime * 1000;
-   console.log(currentTimeMs);
-}
 let playlist = document.querySelector('.playlist')
 let list_liked = document.querySelector('.aside_liked')
 
@@ -501,5 +495,5 @@ btn_add.onclick = () => {
    }
 
    modal_reload()
-
+   aside_reload()
 }
