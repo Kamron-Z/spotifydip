@@ -142,7 +142,26 @@ let music = [
    },
 ]
 
-let musicId = music.map(item => {
-   item.id = music.indexOf(item)
+for (let item of music) {
+   // READ MUSIC INFO
+   let audio = document.createElement('audio')
+   audio.src = `./img/music/${item.title_org}.mp3`
+   audio.controls = true
+
+   audio.addEventListener("loadeddata", function () {
+      // audio.duration ? console.log(audio.duration) : console.log('NO FILE!')
+      item.times = audio.duration / 60
+      item.times = item.times.toString().replace('.', ':').slice(0, 4)
+   });
+}
+
+
+music = music.map(item => {
+   item._id = music.indexOf(item)
+   return item
+})
+
+playlists = playlists.map(item => {
+   item.id = playlists.indexOf(item)
    return item
 })

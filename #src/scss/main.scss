@@ -155,3 +155,34 @@
       }
    }
 }
+
+.index-main {
+   display: grid;
+
+   &.active {
+      display: none;
+   }
+}
+
+.playlist-main {
+   display: flex;
+   display: none;
+
+   &.active {
+      display: block;
+   }
+}
+
+.music-all {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 20px;
+}
+
+.saved-main {
+   display: none;
+
+   &.active {
+      display: block;
+   }
+}

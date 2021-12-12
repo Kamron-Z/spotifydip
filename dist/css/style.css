@@ -222,7 +222,7 @@ span {
   left: 0;
   width: 20%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.8);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   padding: 35px 40px 100px 40px;
@@ -277,6 +277,7 @@ span {
 .list-link a {
   color: #fff;
   position: relative;
+  cursor: pointer;
 }
 
 .list-link a::after {
@@ -342,6 +343,10 @@ span {
 ::-webkit-scrollbar-thumb {
   background: #00ECBE;
   border-radius: 15px;
+}
+
+.list-playlist.active a {
+  color: #00ECBE;
 }
 
 .header {
@@ -498,6 +503,10 @@ span {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 35px 0 130px 0;
+}
+
+.intro.active {
+  display: none;
 }
 
 .intro-rigth {
@@ -794,6 +803,39 @@ span {
 
 .music-modal div:last-child {
   border-bottom: 0;
+}
+
+.index-main {
+  display: grid;
+}
+
+.index-main.active {
+  display: none;
+}
+
+.playlist-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: none;
+}
+
+.playlist-main.active {
+  display: block;
+}
+
+.music-all {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.saved-main {
+  display: none;
+}
+
+.saved-main.active {
+  display: block;
 }
 
 .wrapper {

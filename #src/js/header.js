@@ -1,13 +1,14 @@
 let search = document.querySelector('.search')
 let search_done = document.querySelector('.search-done')
 let search_arr = []
+let audio_arr = []
 search.onkeyup = () => {
 
    if (event.target.value.trim().length >= 2) {
-      let find_title = musicId.filter(item => {
+      let find_title = music.filter(item => {
          return item.title.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
       })
-      let find_author = musicId.filter(item => {
+      let find_author = music.filter(item => {
          return item.author.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
       })
       search_arr = find_author.concat(find_title)
@@ -40,13 +41,13 @@ const search_reload = (arr) => {
 
          title.innerText = item.title
          author.innerText = item.author
-         time.innerText = 'none'
+         time.innerText = item.times
 
          search_done_item.append(title, author, time)
          search_done.append(search_done_item)
 
          search_done_item.onclick = () => {
-            search_play(item.id)
+            search_play(item._id)
          }
       }
    } else {
@@ -56,8 +57,8 @@ const search_reload = (arr) => {
 search_reload(search_arr)
 
 const search_play = (elemId) => {
-   let find = musicId.filter(item => item.id == elemId)[0]
-
+   let find = music.filter(item => item._id == elemId)[0]
+   console.log(find);
    music_play.setAttribute('src', `./img/music/${find.title_org}.mp3`)
    music_name.innerText = find.title
    music_author.innerText = find.author

@@ -142,128 +142,142 @@ let music = [
    },
 ]
 
-let musicId = music.map(item => {
-   item.id = music.indexOf(item)
+for (let item of music) {
+   // READ MUSIC INFO
+   let audio = document.createElement('audio')
+   audio.src = `./img/music/${item.title_org}.mp3`
+   audio.controls = true
+
+   audio.addEventListener("loadeddata", function () {
+      // audio.duration ? console.log(audio.duration) : console.log('NO FILE!')
+      item.times = audio.duration / 60
+      item.times = item.times.toString().replace('.', ':').slice(0, 4)
+   });
+}
+
+
+music = music.map(item => {
+   item._id = music.indexOf(item)
    return item
 })
-let music_random = document.querySelector('.music-random');
+
+playlists = playlists.map(item => {
+   item.id = playlists.indexOf(item)
+   return item
+})
+setTimeout(()=> {
+   
+   let music_random = document.querySelector('.music-random');
 let music_liked = document.querySelector('.music-liked');
+let music_all = document.querySelector('.music-all')
 let music_last = document.querySelector('.music-last');
+let saved_main_inner = document.querySelector('.music-saved');
 let music_play = document.querySelector('.audio-play');
 let music_name = document.querySelector('.audio-user-name');
 let music_author = document.querySelector('.audio-user-album');
+let saved = document.querySelector('.saved');
 let body = document.body
 let body_mask = document.querySelector('.body-mask')
+let getIdLast = []
 
-let audio_arr = []
-let last_arr = []
+const react = (arr, elem) => {
+   for (const item of arr) {
+      let music_music = document.createElement('div')
+      let music_num = document.createElement('p')
+      let music_img = document.createElement('img')
+      let music_author = document.createElement('div')
+      let music_author_h3 = document.createElement('h3')
+      let music_author_p = document.createElement('p')
+      let music_love = document.createElement('div')
+      let music_love_img = document.createElement('img')
+      let music_time = document.createElement('p')
+      let music_menu = document.createElement('div')
+      let music_menu_img = document.createElement('img')
+      let music_menu_modal = document.createElement('div')
+      let music_menu_button1 = document.createElement('div')
+      let music_menu_button2 = document.createElement('div')
+      let music_menu_button3 = document.createElement('div')
 
-const react_reload = (elem, item) => {
+      music_music.classList.add('main-music')
+      music_num.classList.add('main-music-num')
+      music_img.classList.add('main-music-img')
+      music_author.classList.add('main-music-author')
+      music_love.classList.add('main-music-love')
+      music_time.classList.add('main-music-time')
+      music_menu.classList.add('main-music-menu')
+      music_menu_modal.classList.add('music-modal')
 
+      music_num.innerText = item._id + 1
+      music_img.setAttribute('src', `./img/music-pic/${item.img}.jpg`)
+      music_img.id = item.id
+      music_author_h3.innerText = item.title
+      music_author_p.innerText = item.author
+      music_time.innerText = 'none'
+      if (item.isLiked) {
+         music_love_img.setAttribute('src', `./img/love-blue.png`)
+      } else {
+         music_love_img.setAttribute('src', `./img/love-gray.png`)
+      }
+      music_menu_img.setAttribute('src', `./img/music-menu.png`)
+      if (item.isLiked) {
+         music_menu_button1.innerText = 'Dislike'
+      } else {
+         music_menu_button1.innerText = 'Like'
+      }
+      music_menu_button2.innerText = 'add to playlist'
+      music_menu_button3.innerText = 'listen now'
+      music_time.innerText = item.times
 
-   let music_music = document.createElement('div')
-   let music_num = document.createElement('p')
-   let music_img = document.createElement('img')
-   let music_author = document.createElement('div')
-   let music_author_h3 = document.createElement('h3')
-   let music_author_p = document.createElement('p')
-   let music_love = document.createElement('div')
-   let music_love_img = document.createElement('img')
-   let music_time = document.createElement('p')
-   let music_menu = document.createElement('div')
-   let music_menu_img = document.createElement('img')
-   let music_menu_modal = document.createElement('div')
-   let music_menu_button1 = document.createElement('div')
-   let music_menu_button2 = document.createElement('div')
-   let music_menu_button3 = document.createElement('div')
+      // append
+      music_menu_modal.append(music_menu_button1, music_menu_button2, music_menu_button3)
+      music_menu.append(music_menu_img, music_menu_modal)
+      music_love.append(music_love_img)
+      music_author.append(music_author_h3, music_author_p)
+      music_music.append(music_num, music_img, music_author, music_love, music_time, music_menu)
+      elem.append(music_music)
 
-   music_music.classList.add('main-music')
-   music_num.classList.add('main-music-num')
-   music_img.classList.add('main-music-img')
-   music_author.classList.add('main-music-author')
-   music_love.classList.add('main-music-love')
-   music_time.classList.add('main-music-time')
-   music_menu.classList.add('main-music-menu')
-   music_menu_modal.classList.add('music-modal')
-
-   music_num.innerText = item.id + 1
-   music_img.setAttribute('src', `./img/music-pic/${item.img}.jpg`)
-   music_author_h3.innerText = item.title
-   music_author_p.innerText = item.author
-
-   music_time.innerText = 'none'
-   if (item.isLiked) {
-      music_love_img.setAttribute('src', `./img/love-blue.png`)
-   } else {
-      music_love_img.setAttribute('src', `./img/love-gray.png`)
-   }
-   music_menu_img.setAttribute('src', `./img/music-menu.png`)
-   if (item.isLiked) {
-      music_menu_button1.innerText = 'Dislike'
-   } else {
-      music_menu_button1.innerText = 'Like'
-   }
-   music_menu_button2.innerText = 'add to playlist'
-   music_menu_button3.innerText = 'listen now'
-
-   // append
-   music_menu_modal.append(music_menu_button1, music_menu_button2, music_menu_button3)
-   music_menu.append(music_menu_img, music_menu_modal)
-   music_love.append(music_love_img)
-   music_author.append(music_author_h3, music_author_p)
-   music_music.append(music_num, music_img, music_author, music_love, music_time, music_menu)
-   elem.append(music_music)
-
-   music_love_img.onclick = () => {
-      audio_liked(item.id)
-   }
-   music_img.onclick = () => {
-      audio_play(item.id)
-   }
-   music_menu.onclick = () => {
-      click_menu(item.id, music_menu_modal, music_music)
-   }
-   music_menu_button1.onclick = () => {
-      btn_like(item.id)
-   }
-   music_menu_button2.onclick = () => {
-      addPlaylist(item.id)
+      music_love_img.onclick = () => {
+         audio_liked(item._id)
+      }
+      music_img.onclick = () => {
+         audio_play(item._id)
+      }
+      music_menu.onclick = () => {
+         click_menu(item._id, music_menu_modal, music_music)
+      }
+      music_menu_button1.onclick = () => {
+         btn_like(item._id)
+      }
+      music_menu_button2.onclick = () => {
+         addPlaylist(item._id)
+      }
    }
 }
 
 const reload_playlist = (arr) => {
    music_random.innerHTML = ''
+   react(arr, music_random)
+}
 
-   for (const item of arr) {
-      if (music_random) {
-         react_reload(music_random, item)
-      }
-   }
+const reload_allSongs = (arr) => {
+   music_all.innerHTML = ''
+   react(arr, music_all)
+}
+
+const reload_savedSongs = (arr) => {
+   saved_main_inner.innerHTML = ''
+   react(arr, saved_main_inner)
 }
 
 const reload_liked = (arr) => {
    music_liked.innerHTML = ''
-
-   for (const item of arr) {
-      if (item.isLiked) {
-         react_reload(music_liked, item)
-      }
-   }
+   react(arr.filter(item => item.isLiked), music_liked)
 }
 
 const reload_last = (arr) => {
    music_last.innerHTML = ''
-
-   for (const item of arr) {
-      if (last_arr.length > 0) {
-         react_reload(music_last, item)
-      }
-   }
+   react(arr, music_last)
 }
-
-reload_playlist(musicId)
-reload_liked(musicId)
-reload_last(last_arr)
 
 let music_menu_modal = document.querySelectorAll('.music-modal')
 let music_music = document.querySelectorAll('.main-music')
@@ -271,25 +285,28 @@ let modal = document.querySelector('.modal')
 let modal_cancel = document.querySelector('.modal-cancel')
 
 const audio_liked = (elemId) => {
-   let find = musicId.filter(item => item.id == elemId)[0]
+   let find = music.filter(item => item._id == elemId)[0]
    find.isLiked = !find.isLiked
 
-   reload_playlist(musicId)
-   reload_liked(musicId)
-   reload_last(last_arr)
+   reload_playlist(music)
+   reload_liked(music)
+   reload_last(getIdLast)
    aside_liked()
 }
+
 const audio_play = (elemId) => {
-   let find = musicId.filter(item => item.id == elemId)[0]
+   let find = music.filter(item => item._id == elemId)[0]
    music_play.setAttribute('src', `./img/music/${find.title_org}.mp3`)
    music_name.innerText = find.title
    music_author.innerText = find.author
-
-   audio_arr.unshift(find)
-   last_arr = audio_arr.filter((item, pos) => {
-      return audio_arr.indexOf(item) == pos
+   getIdLast.unshift(find)
+   getIdLast = getIdLast.filter((item, pos) => {
+      return getIdLast.indexOf(item) == pos
    })
-   reload_last(last_arr)
+   console.log(getIdLast);
+   reload_playlist(music)
+   reload_liked(music)
+   reload_last(getIdLast)
    playAudio()
 }
 
@@ -301,15 +318,15 @@ const click_menu = (elemId, modal, music) => {
 }
 
 const btn_like = (elemId) => {
-   let find = musicId.filter(item => item.id == elemId)[0]
+   let find = music.filter(item => item.id == elemId)[0]
    find.isLiked = !find.isLiked
 
    body_mask.classList.remove('active')
    body.classList.remove('hidden')
 
-   reload_playlist(musicId)
-   reload_liked(musicId)
-   reload_last(last_arr)
+   reload_playlist(music)
+   reload_liked(music)
+   reload_last(getIdLast)
    aside_liked()
 }
 
@@ -342,8 +359,19 @@ modal_cancel.onclick = () => {
       item.classList.remove('active')
    }
 }
-let playlist = document.querySelector('.playlist')
+reload_playlist(music)
+reload_liked(music)
+reload_last(getIdLast)
+   let playlist = document.querySelector('.playlist')
 let list_liked = document.querySelector('.aside_liked')
+let list_playlist = document.querySelector('.list-playlist')
+let index_main = document.querySelector('.index-main')
+let playlist_main = document.querySelector('.playlist-main')
+let list_home = document.querySelector('.list-home')
+let intro = document.querySelector('.intro')
+let saved_main = document.querySelector('.saved-main')
+
+
 
 const aside_reload = () => {
    playlist.innerHTML = ''
@@ -353,18 +381,24 @@ const aside_reload = () => {
       let a = document.createElement('a')
 
       list_link.classList.add('list-link')
-      a.setAttribute('href', `./playlist.html`)
+      a.setAttribute('href', `#`)
+      a.id = item.id
       a.innerText = item.title
-
       list_link.append(a)
       playlist.append(list_link)
+
+      a.onclick = () => {
+         savedList(item.id)
+      }
    }
 }
+
+
 
 const aside_liked = () => {
    list_liked.innerHTML = ''
 
-   for (const item of musicId) {
+   for (const item of music) {
       if (item.isLiked == true) {
          let list_div = document.createElement('div')
          let list_link = document.createElement('a')
@@ -375,26 +409,62 @@ const aside_liked = () => {
          list_link.classList.add('list-link')
 
          list_link.innerText = item.title
-         list_span.innerText = 'none'
+         list_span.innerText = item.times
 
          list_div.append(list_link, list_span)
          list_liked.append(list_div)
+
+         list_link.onclick = () => {
+            audio_play(item._id)
+         }
       }
    }
 }
 
 aside_reload()
 aside_liked()
-let search = document.querySelector('.search')
+
+list_playlist.onclick = () => {
+   event.preventDefault()
+   list_playlist.classList.add('active')
+   index_main.classList.add('active')
+   playlist_main.classList.add('active')
+   intro.classList.add('active')
+   saved_main.classList.remove('active')
+   reload_allSongs(music)
+}
+
+list_home.onclick = () => {
+   event.preventDefault()
+   list_playlist.classList.remove('active')
+   index_main.classList.remove('active')
+   playlist_main.classList.remove('active')
+   intro.classList.remove('active')
+   saved_main.classList.remove('active')
+}
+
+const savedList = (elemId) => {
+   let find = playlists.filter(item => item.id == elemId)[0]
+   saved.innerText = find.title
+   saved_main.classList.add('active')
+
+   index_main.classList.add('active')
+   list_playlist.classList.remove('active')
+   playlist_main.classList.remove('active')
+   intro.classList.add('active')
+   reload_savedSongs(find.music)
+}
+   let search = document.querySelector('.search')
 let search_done = document.querySelector('.search-done')
 let search_arr = []
+let audio_arr = []
 search.onkeyup = () => {
 
    if (event.target.value.trim().length >= 2) {
-      let find_title = musicId.filter(item => {
+      let find_title = music.filter(item => {
          return item.title.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
       })
-      let find_author = musicId.filter(item => {
+      let find_author = music.filter(item => {
          return item.author.trim().toLowerCase().includes(event.target.value.trim().toLowerCase())
       })
       search_arr = find_author.concat(find_title)
@@ -427,13 +497,13 @@ const search_reload = (arr) => {
 
          title.innerText = item.title
          author.innerText = item.author
-         time.innerText = 'none'
+         time.innerText = item.times
 
          search_done_item.append(title, author, time)
          search_done.append(search_done_item)
 
          search_done_item.onclick = () => {
-            search_play(item.id)
+            search_play(item._id)
          }
       }
    } else {
@@ -443,8 +513,8 @@ const search_reload = (arr) => {
 search_reload(search_arr)
 
 const search_play = (elemId) => {
-   let find = musicId.filter(item => item.id == elemId)[0]
-
+   let find = music.filter(item => item._id == elemId)[0]
+   console.log(find);
    music_play.setAttribute('src', `./img/music/${find.title_org}.mp3`)
    music_name.innerText = find.title
    music_author.innerText = find.author
@@ -456,7 +526,7 @@ const search_play = (elemId) => {
    reload_last(last_arr)
    playAudio()
 }
-let modal_box = document.querySelector('.modal-box')
+   let modal_box = document.querySelector('.modal-box')
 let modal_add = document.querySelector('.modal-add input')
 let btn_add = document.querySelector('.modal-btn')
 
@@ -498,7 +568,7 @@ btn_add.onclick = () => {
    modal_reload()
    aside_reload()
 }
-let replay = document.querySelector('.relpay')
+   let replay = document.querySelector('.relpay')
 let prew = document.querySelector('.prew')
 let play = document.querySelector('.play')
 let play_src = document.querySelector('.play_src')
@@ -512,12 +582,12 @@ let progress_container = document.querySelector('.progress-container')
 
 let songsIndex = 0
 
-let songsArr = musicId.map(item => item.title_org)
-let titleArr = musicId.map(item => item.title)
-let authorArr = musicId.map(item => item.author)
+let songsArr = music.map(item => item.title_org)
+let titleArr = music.map(item => item.title)
+let authorArr = music.map(item => item.author)
 
 // play
-const playAudio = () => {
+const playAudio = (elemId) => {
    play.classList.add('active')
    play_src.src = `./img/pause.svg`
    audioPlay.play()
@@ -548,7 +618,6 @@ const nextPlay = () => {
    }
    music_name.innerText = titleArr[songsIndex]
    music_author.innerText = authorArr[songsIndex]
-
    audioPlay.src = `./img/music/${songsArr[songsIndex]}.mp3`
    playAudio()
 }
@@ -581,8 +650,10 @@ const getProgress = (e) => {
    } = e.srcElement
    let progProsent = (currentTime / duration) * 100
    progress.style.width = `${progProsent}%`
-   timesong.innerText = (duration / 60).toFixed(1) + "min"
-   played.innerText = `${(currentTime / 60).toFixed(1)}`
+   timesong.innerText = (duration / 60).toFixed(2) + "min"
+   timesong.innerText = timesong.innerText.replace('.', ':')
+   played.innerText = `${(currentTime / 60).toFixed(2)}min`
+   played.innerText = played.innerText.replace('.', ':')
 }
 
 audioPlay.addEventListener('timeupdate', getProgress)
@@ -598,3 +669,4 @@ const setProgress = (e) => {
 progress_container.addEventListener('click', setProgress)
 
 audioPlay.addEventListener('ended', nextPlay)
+} , 500)

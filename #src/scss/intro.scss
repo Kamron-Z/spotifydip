@@ -1,8 +1,12 @@
 .intro {
-  
+
    display: flex;
    justify-content: space-between;
    padding: 35px 0 130px 0;
+
+   &.active {
+      display: none;
+   }
 
    &-left {}
 

@@ -4,7 +4,7 @@
    left: 0;
    width: 20%;
    height: 100vh;
-   background: rgba(0, 0, 0, 0.2);
+   background: rgba(0, 0, 0, 0.8);
    backdrop-filter: blur(4px);
    padding: 35px 40px 100px 40px;
    z-index: 100;
@@ -50,6 +50,7 @@
       a {
          color: $white;
          position: relative;
+         cursor: pointer;
 
          &::after {
             content: '';
@@ -108,4 +109,13 @@
 ::-webkit-scrollbar-thumb {
    background: $blue-col;
    border-radius: 15px;
+}
+
+.list-playlist {
+
+   &.active {
+      a {
+         color: $blue-col;
+      }
+   }
 }

@@ -12,12 +12,12 @@ let progress_container = document.querySelector('.progress-container')
 
 let songsIndex = 0
 
-let songsArr = musicId.map(item => item.title_org)
-let titleArr = musicId.map(item => item.title)
-let authorArr = musicId.map(item => item.author)
+let songsArr = music.map(item => item.title_org)
+let titleArr = music.map(item => item.title)
+let authorArr = music.map(item => item.author)
 
 // play
-const playAudio = () => {
+const playAudio = (elemId) => {
    play.classList.add('active')
    play_src.src = `./img/pause.svg`
    audioPlay.play()
@@ -48,7 +48,6 @@ const nextPlay = () => {
    }
    music_name.innerText = titleArr[songsIndex]
    music_author.innerText = authorArr[songsIndex]
-
    audioPlay.src = `./img/music/${songsArr[songsIndex]}.mp3`
    playAudio()
 }
@@ -81,8 +80,10 @@ const getProgress = (e) => {
    } = e.srcElement
    let progProsent = (currentTime / duration) * 100
    progress.style.width = `${progProsent}%`
-   timesong.innerText = (duration / 60).toFixed(1) + "min"
-   played.innerText = `${(currentTime / 60).toFixed(1)}`
+   timesong.innerText = (duration / 60).toFixed(2) + "min"
+   timesong.innerText = timesong.innerText.replace('.', ':')
+   played.innerText = `${(currentTime / 60).toFixed(2)}min`
+   played.innerText = played.innerText.replace('.', ':')
 }
 
 audioPlay.addEventListener('timeupdate', getProgress)
